@@ -93,19 +93,16 @@ namespace DataModel.GenericRepository
         /// </summary>
         /// <param name="primaryKey"></param>
         /// <returns></returns>
-        public bool Exists(object primaryKey)
-        {
-            return DbSet.Find(primaryKey) != null;
-        }
+        public bool Exists(object primaryKey)=>
+            DbSet.Find(primaryKey) != null;
         /// <summary>
         /// Gets a single record by the specified criteria (usually the unique identifier)
         /// </summary>
         /// <param name="predicate">Criteria to match on</param>
         /// <returns>A single record that matches the specified criteria</returns>
-        public TEntity GetSingle(Func<TEntity, bool> predicate)
-        {
-            return DbSet.Single<TEntity>(predicate);
-        }
+        public TEntity GetSingle(Func<TEntity, bool> predicate)=>
+            DbSet.Single<TEntity>(predicate);
+
         /// <summary>
         /// The first record matching the specified criteria
         /// </summary>
