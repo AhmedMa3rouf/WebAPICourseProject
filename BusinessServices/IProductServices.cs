@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessServices
 {
-    interface IProductServices
+    public interface IProductServices
     {
         ProductEntity GetProductById(int productId);
         IEnumerable<ProductEntity> GetAllProducts();

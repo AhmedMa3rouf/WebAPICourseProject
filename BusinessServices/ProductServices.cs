@@ -14,7 +14,7 @@ namespace BusinessServices
     /// <summary>
     /// Offers services for product specific CRUD operations
     /// </summary>
-    class ProductServices : IProductServices
+    public class ProductServices : IProductServices
     {
         readonly UnitOfWork _unitOfWork;
         IMapper mapper;
