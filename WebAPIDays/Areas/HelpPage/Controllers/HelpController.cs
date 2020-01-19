@@ -13,18 +13,21 @@ namespace WebAPIDays.Areas.HelpPage.Controllers
     {
         private const string ErrorViewName = "Error";
 
-        public HelpController()
-            : this(GlobalConfiguration.Configuration)
+        //public HelpController()
+        //    : this(GlobalConfiguration.Configuration)
+        //{
+        //}
+
+        //public HelpController(HttpConfiguration config)
+        //{
+        //    Configuration = config;
+        //}
+
+        //public HttpConfiguration Configuration { get; private set; }
+        protected static HttpConfiguration Configuration
         {
+            get { return GlobalConfiguration.Configuration; }
         }
-
-        public HelpController(HttpConfiguration config)
-        {
-            Configuration = config;
-        }
-
-        public HttpConfiguration Configuration { get; private set; }
-
         public ActionResult Index()
         {
             ViewBag.DocumentationProvider = Configuration.Services.GetDocumentationProvider();

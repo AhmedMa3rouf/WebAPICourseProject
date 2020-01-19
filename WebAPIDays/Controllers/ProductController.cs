@@ -6,17 +6,24 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApi.Filters;
 
 namespace WebAPIDays.Controllers
 {
+    [ApiAuthenticationFilter]
+    [RoutePrefix("Api/Product")]
     public class ProductController : ApiController
     {
         readonly IProductServices productService;
-        public ProductController()
+       
+        public ProductController(IProductServices productServices)
         {
-            productService = new ProductServices();
+            this.productService = productServices;
+            // This line if before dependancy injection using Unity.MVC5
+            //productService = new ProductServices();
         }
         // GET: api/Product
+        [Route("AllProducts")]
         public HttpResponseMessage Get()
         {
             var products = productService.GetAllProducts();

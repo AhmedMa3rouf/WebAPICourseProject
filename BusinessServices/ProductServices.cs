@@ -44,9 +44,11 @@ namespace BusinessServices
         //    }
         //    return mapper;
         //}
-        public ProductServices()
+        public ProductServices(UnitOfWork unitOfWork)
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
+            // This line if before dependancy injection using Unity.MVC5
+            //_unitOfWork = new UnitOfWork();
         }
         /// <summary>
         /// Fetches product details by id

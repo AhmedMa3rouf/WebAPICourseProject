@@ -1,7 +1,12 @@
-﻿using System;
+﻿using BusinessServices;
+using DataModel.UnitOfWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Unity;
+using Unity.Lifetime;
+using WebApi.Filters;
 
 namespace WebAPIDays
 {
@@ -10,6 +15,12 @@ namespace WebAPIDays
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            var container = new UnityContainer();
+            container.RegisterType<IProductServices, ProductServices>()
+                .RegisterType<UnitOfWork>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserService,UserServices>()
+                .RegisterType<UnitOfWork>(new HierarchicalLifetimeManager());
+            config.DependencyResolver = new UnityResolver(container);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -19,6 +30,7 @@ namespace WebAPIDays
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            GlobalConfiguration.Configuration.Filters.Add(new ApiAuthenticationFilter());
         }
     }
 }
