@@ -3,7 +3,7 @@ using System.Web.Http.Controllers;
 using BusinessServices;
 using WebAPIDays.Filters;
 
-namespace WebApi.Filters
+namespace WebAPIDays.Filters
 {
     /// <summary>
     /// Custom Authentication Filter Extending basic Authentication

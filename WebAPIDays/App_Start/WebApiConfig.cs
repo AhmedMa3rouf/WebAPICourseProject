@@ -6,7 +6,8 @@ using System.Linq;
 using System.Web.Http;
 using Unity;
 using Unity.Lifetime;
-using WebApi.Filters;
+using WebAPIDays.Filters;
+using WebAPIDays.ActionFilters;
 
 namespace WebAPIDays
 {
@@ -14,6 +15,7 @@ namespace WebAPIDays
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Filters.Add(new LoggingFilterAttribute());
             // Web API configuration and services
             var container = new UnityContainer();
             container.RegisterType<IProductServices, ProductServices>()

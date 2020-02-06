@@ -16,7 +16,7 @@ namespace BusinessServices
     /// </summary>
     public class ProductServices : IProductServices
     {
-        readonly UnitOfWork _unitOfWork;
+        readonly IUnitOfWork _unitOfWork;
         IMapper mapper;
         public IMapper Mapper
         {
@@ -44,7 +44,7 @@ namespace BusinessServices
         //    }
         //    return mapper;
         //}
-        public ProductServices(UnitOfWork unitOfWork)
+        public ProductServices(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             // This line if before dependancy injection using Unity.MVC5
